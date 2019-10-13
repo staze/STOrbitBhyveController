@@ -514,8 +514,8 @@ def timestamp(type='long') {
     }
     Date datenow = new Date()
     def tf = new java.text.SimpleDateFormat(formatstring)
-    def loc = getTwcLocation()?.location
-    tf.setTimeZone(TimeZone.getTimeZone(loc.ianaTimeZone))
+    def loc = TimeZone.getDefault().getID()
+    tf.setTimeZone(TimeZone.getTimeZone(loc))
     return tf.format(datenow).replace("AM", "am").replace("PM","pm")
 }
 
